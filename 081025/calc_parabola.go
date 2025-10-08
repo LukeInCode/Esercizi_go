@@ -21,5 +21,5 @@ func main() {
 
   var delta float64 = math.Pow(b,2) - 4 * a * c;
   var x1, x2 float64 = (b * -1 + math.Sqrt(delta)) / (2 * a), (b * -1 - math.Sqrt(delta)) / (2 * a);
-  fmt.Println(x1,x2);
+  fmt.Printf("La prima soluzione reale è %.2f, e la seconda è %.2f\n",x1,x2);
 }
