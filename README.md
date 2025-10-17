@@ -15,4 +15,4 @@ limitations under the License.
 ---
 
 # Esercitazione go
-Esercitazione di base in golang.
+Raccolta di tutti gli esercizi di programmazione (teoria e laboratorio)
