@@ -1,40 +1,63 @@
 package main
 import "fmt"
-import "io"
-import "strconv"
-import "strings"
+import "unicode"
+import "time"
 
-func main() {
-  var n, previous, group int = 0, -1, 0;
-  var gradino,max, lastGroup string = "", "", "";
+func estraiGradino(s string) (string, int) {
+  var gradino string = "";
+  var group, lastIndex int = 0, -1;
+  var previous rune;
   
-  for {
-    _,err := fmt.Scanf("%d", &n);
-    if err == io.EOF || n < previous {
+  for index,r := range s {
+    newGroup := r != previous;
+
+    if group == 1 {
+      lastIndex = index;
+    }
+    
+    if group == 2 && newGroup {
       break;
     }
-    nString := strconv.Itoa(n);
-    if !strings.ContainsAny(gradino, nString) {
-      if group == 2 {
-        if len(max) < len(gradino) {
-          max = gradino;
-        }
-        group = 0;
-        gradino = lastGroup;
-        fmt.Println(gradino)
-      }
+    gradino += string(r);
+    if newGroup {
       group++;
     }
-    if group < 2 || n == previous {
-      gradino += nString;
-    }
-    if strings.ContainsAny(lastGroup, nString) {
-      lastGroup += nString;
-    }else {
-      lastGroup = nString;
-    }
-            fmt.Println(gradino)
-    previous = n;
+    previous = r;
   }
-  fmt.Printf("Il gradino massimo è %s, con una lunghezza di %d\n", max, len(max));
+  return gradino, lastIndex;
+}
+
+func main() {
+  var seq string;
+  var ch, previous rune;
+
+  for {
+    fmt.Scanf("%c", &ch);
+    if !unicode.IsDigit(ch) {
+      continue;
+    }
+    seq += string(ch);
+    if (ch - '0') < (previous - '0') {
+      break;
+    }
+    previous = ch;
+  }
+
+  var index int;
+  var gr, max string;
+  var cpSeq string = seq;
+  
+  for {
+    gr,index = estraiGradino(cpSeq);
+    if index >= len(seq) || index < 0 {
+      break;
+    }
+    cpSeq = cpSeq[index:];
+
+    if len(gr) > len(max) {
+      max = gr;
+    }
+    time.Sleep(100 * time.Millisecond)
+  }
+  fmt.Println("Il gradino massimo è:",max);
 }
