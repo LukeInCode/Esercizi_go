@@ -34,7 +34,7 @@ func clessidra(height int, time int, char byte) {
   var sand bool = true;
   
   for i := 0; i < height; i++ {
-    lenght_ch = height - 2*i;
+    lenght_ch = height - 2 * i;
     if lenght_ch < 1 {
       lenght_ch = 0;
     }
@@ -48,9 +48,11 @@ func clessidra(height int, time int, char byte) {
     if i == height - 1 {
       sand = false;
     }
-    fmt.Print(strings.Repeat("-",spaces));
+    fmt.Print(strings.Repeat(" ",spaces));
     fmt.Print(rigaClessidra(lenght_ch, sand, byte(char)));
-    fmt.Print(strings.Repeat("-",spaces));
+    if lenght_ch != 0 {
+      fmt.Print(strings.Repeat(" ",spaces));
+    }
     fmt.Println("/");
   }
 }
