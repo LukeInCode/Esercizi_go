@@ -30,9 +30,9 @@ func attendi(n_seconds float64){
 
 func clessidra(height int, time int, char byte) {
   var BASE = height * 2 + 1;
-  var sand bool = true;
+  var sand bool = false;
   var spazi_interni int;
-
+  
   var j int = BASE - 2;
   for i := height; i > 0; i-- { // Ciclo per la parte superiore della clessidra
     fmt.Print(strings.Repeat(" ", height - i));
@@ -43,10 +43,15 @@ func clessidra(height int, time int, char byte) {
       spazi_interni = j;
       j -= 2;
     }
+    sand = false;
+    if i - 1 >= time {
+      sand = true;
+    }
     fmt.Print(rigaClessidra(spazi_interni,sand,char));
     fmt.Println("/");
   }
 
+  sand = false;
   var c int = 3;
   for i := height - 1; i >= 0; i-- { // Ciclo per la parte inferiore della clessidra
     fmt.Print(strings.Repeat(" ", i));
@@ -57,7 +62,10 @@ func clessidra(height int, time int, char byte) {
       spazi_interni = c;
       c += 2;
     }
-    fmt.Print(rigaClessidra(spazi_interni,false,char));
+    if i < time {
+      sand = true;
+    }
+    fmt.Print(rigaClessidra(spazi_interni,sand,char));
     fmt.Println("\\");
   }
 }
@@ -66,9 +74,11 @@ func clessidra(height int, time int, char byte) {
 func main() {
   var secondi, counter int;
   fmt.Scan(&secondi);
-  
-  //cancella();
-  clessidra(secondi, counter, '*');
-  counter++;
-  //attendi(1);
+
+  for secondi - counter > 0 {
+    cancella();
+    counter++;
+    clessidra(secondi, counter, '*');
+    attendi(1);
+  }
 }
