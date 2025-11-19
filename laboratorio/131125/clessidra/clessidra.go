@@ -29,31 +29,36 @@ func attendi(n_seconds float64){
 
 
 func clessidra(height int, time int, char byte) {
-  var B = height * 2 + 1;
-  var lenght_ch int;
+  //var BASE = height * 2 + 1;
   var sand bool = true;
+  var spazi_interni int;
   
-  for i := 0; i < height; i++ {
-    lenght_ch = height - 2 * i;
-    if lenght_ch < 1 {
-      lenght_ch = 0;
-    }
-    fmt.Print(strings.Repeat(" ",i));
+  for i := height; i > 0; i-- { // Ciclo per la parte superiore della clessidra
+    fmt.Print(strings.Repeat(" ", height - i));
     fmt.Print("\\");
-    spaces := (B - i - 2 - lenght_ch) / 2;
-    
-    if spaces < 0 {
-      spaces = 0;
+    if i == 1 {
+      spazi_interni = 1;
+    }else {
+      spazi_interni = int(float64(i) / 2.0 + 0.5) + i;
     }
-    if i == height - 1 {
-      sand = false;
-    }
-    fmt.Print(strings.Repeat(" ",spaces));
-    fmt.Print(rigaClessidra(lenght_ch, sand, byte(char)));
-    if lenght_ch != 0 {
-      fmt.Print(strings.Repeat(" ",spaces));
-    }
+    fmt.Print(rigaClessidra(spazi_interni,sand,char));
     fmt.Println("/");
+  }
+
+  
+  for i := height - 1; i >= 0; i-- { // Ciclo per la parte inferiore della clessidra
+    fmt.Print(strings.Repeat(" ", i));
+    fmt.Print("/");
+    if i == height - 1 {
+      spazi_interni = 1;
+    }else if i == 0 {
+      spazi_interni = height + int(float64(height) / 2.0 + 0.5);
+    }else {
+      spazi_interni = (i + 1) + int(float64(i) / 2.0 + 0.5);
+    }
+    fmt.Print(rigaClessidra(spazi_interni,false,char));
+    fmt.Println("\\");
+    
   }
 }
 
