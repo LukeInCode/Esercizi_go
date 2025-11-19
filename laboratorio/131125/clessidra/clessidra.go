@@ -29,17 +29,19 @@ func attendi(n_seconds float64){
 
 
 func clessidra(height int, time int, char byte) {
-  //var BASE = height * 2 + 1;
+  var BASE = height * 2 + 1;
   var sand bool = true;
   var spazi_interni int;
-  
+
+  var j int = BASE - 2;
   for i := height; i > 0; i-- { // Ciclo per la parte superiore della clessidra
     fmt.Print(strings.Repeat(" ", height - i));
     fmt.Print("\\");
     if i == 1 {
       spazi_interni = 1;
     }else {
-      spazi_interni = int(float64(i) / 2.0 + 0.5) + i;
+      spazi_interni = j;
+      j -= 2;
     }
     fmt.Print(rigaClessidra(spazi_interni,sand,char));
     fmt.Println("/");
@@ -53,7 +55,7 @@ func clessidra(height int, time int, char byte) {
       spazi_interni = 1;
     } else {
       spazi_interni = c;
-      c+=2;
+      c += 2;
     }
     fmt.Print(rigaClessidra(spazi_interni,false,char));
     fmt.Println("\\");
