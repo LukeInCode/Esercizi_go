@@ -45,20 +45,18 @@ func clessidra(height int, time int, char byte) {
     fmt.Println("/");
   }
 
-  
+  var c int = 3;
   for i := height - 1; i >= 0; i-- { // Ciclo per la parte inferiore della clessidra
     fmt.Print(strings.Repeat(" ", i));
     fmt.Print("/");
     if i == height - 1 {
       spazi_interni = 1;
-    }else if i == 0 {
-      spazi_interni = height + int(float64(height) / 2.0 + 0.5);
-    }else {
-      spazi_interni = (i + 1) + int(float64(i) / 2.0 + 0.5);
+    } else {
+      spazi_interni = c;
+      c+=2;
     }
     fmt.Print(rigaClessidra(spazi_interni,false,char));
     fmt.Println("\\");
-    
   }
 }
 
