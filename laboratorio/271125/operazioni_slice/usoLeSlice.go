@@ -83,30 +83,37 @@ func main() {
 	mySlice = append(mySlice[:1], append(myNewSlice, mySlice[1:]...)...)
 	fmt.Println(" 8.", mySlice)
 
-	/*// 9. legge una nuova parola e la inserisce in posizione 2 della slice
+	// 9. legge una nuova parola e la inserisce in posizione 2 della slice
 	fmt.Print("scrivi una parola: ")
-	// ...
+	var word []string = make([]string, 1);
+	fmt.Scan(&word[0]);
+	mySlice = append(mySlice[:2], append(word, mySlice[2:]...)...);
 	fmt.Println(" 9.", mySlice)
 
 	//10. legge una nuova parola e la inserisce in fondo alla slice
 	fmt.Print("scrivi una parola: ")
-	// ...
+	var second_word string;
+	fmt.Scan(&second_word);
+	mySlice = append(mySlice, second_word);
 	fmt.Println("10.", mySlice)
 
 	// 11. estende la slice con una nuova slice di lunghezza 2 (di stringhe vuote)
-	// ...
+	var emptySlice []string = []string{"", ""};
+	mySlice = append(mySlice, emptySlice...);
 	fmt.Println("11.", mySlice)
 
 	// 12. inserisce alla posizione 3 una nuova slice di lunghezza 3 (di stringhe vuote)
-	// ...
+	emptySlice = append(emptySlice, "");
+	mySlice = append(mySlice[:3], append(emptySlice, mySlice[3:]...)...);
 	fmt.Println("12.", mySlice)
 
 	// 13. copia in una nuova slice la slice ottenuta fin qui
-	// ...
-	fmt.Println("13.", copyOfMySlice)
+	copyOfMySlice := make([]string, len(mySlice));
+	copy(copyOfMySlice, mySlice);
+	fmt.Println("13.", copyOfMySlice);
 
 	// 14. dalla copia rimuove l'ultimo elemento e stampa sia la vecchia slice che la copia.
-	// ...
-	fmt.Println("14.", mySlice, "\n   ", copyOfMySlice)*/
+	copyOfMySlice = copyOfMySlice[:len(copyOfMySlice) - 1];
+	fmt.Println("14.", mySlice, "\n   ", copyOfMySlice)
 }
 
