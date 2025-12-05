@@ -1,0 +1,17 @@
+===== REPORT ANALISI FILE DI LOG =====
+
+
+Richieste totali: 6
+Metodi HTTP utilizzati: 
+	GET: 5
+	POST: 1
+
+Errori:
+	500: 1
+	403: 1
+
+Url maggiormente ricercata: /index.html
+
+Maggior tempo di risposta: 213
+
+Tempo di risposta medio: 82.333

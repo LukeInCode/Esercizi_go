@@ -1,0 +1,6 @@
+2025-03-10 12:21:10 GET /index.html 200 123ms
+2025-03-10 12:21:11 POST /login 403 8ms
+2025-03-10 12:21:12 GET /products 200 57ms
+2025-03-10 12:21:14 GET /products 500 16ms
+2025-03-10 13:42:01 GET /index.html 200 77ms
+2025-03-10 11:42:01 GET /index.html 133 213ms
