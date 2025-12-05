@@ -32,11 +32,16 @@ func main() {
 
   fmt.Println(lenMap);
 
+  for k,v := range lenMap {
+    fmt.Print(k, ",", v, " ");
+  }
+  fmt.Println();
+
   var min, max int = trovaChiaviMinMax(lenMap);
   for i := min; i <= max; i++ {
     fmt.Printf("%d;%d ", i, lenMap[i]);
   }
-  fmt.Println("");
+  fmt.Println();
   
   for i := min; i <= max; i++ {
     _, ok := lenMap[i];

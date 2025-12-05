@@ -39,11 +39,12 @@ func main() {
 
     set[k] = value;
   }
+
   for i,n := range numbers {
     if i == len(numbers) - 1 {
       break;
     }
     fmt.Printf("%s - ", set[n]);
   }
-  fmt.Println(set[len(numbers)]);
+  fmt.Println(set[numbers[len(numbers) - 1]]);
 }
