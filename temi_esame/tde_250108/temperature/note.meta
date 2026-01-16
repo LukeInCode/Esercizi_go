@@ -1,0 +1,4 @@
+NOME=temperature
+TOPICS=os.Args,file,map(conteggio),max
+LIV=medio
+DESCR=
